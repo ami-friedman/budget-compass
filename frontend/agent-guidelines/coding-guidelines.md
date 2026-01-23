@@ -1,8 +1,8 @@
 # Frontend development guidelines  
-## Budgeting app — Angular 19 (modern patterns)
+## Budgeting app — Angular 21 (modern patterns)
 
 These guidelines focus on **how to build and structure the frontend**, not on visual design.  
-They assume **Angular 19**, standalone APIs, signals, and the new template control flow.
+They assume **Angular 21**, standalone APIs, signals, and the new template control flow.
 
 ---
 
@@ -166,6 +166,11 @@ User input is untrusted until proven otherwise.
 - Avoid component-specific CSS unless necessary
 - Centralize design tokens (spacing, colors, typography)
 
+Tailwind v4 setup note (Angular 21+):
+- Prefer [styles.css](frontend/src/styles.css:1) for the Tailwind import to avoid Sass @import deprecation warnings.
+- Keep [postcss.config.js](frontend/postcss.config.js:1) with `@tailwindcss/postcss` plugin.
+- Point [angular.json](frontend/angular.json:1) `styles` to `src/styles.css`.
+
 Rules:
 - No logic-driven styling
 - No inline style calculations
@@ -226,4 +231,4 @@ You should be able to:
 If you want next, we can:
 - align FE features with backend domains
 - define frontend domain models for money & dates
-- review a sample Angular 19 feature and refactor it to this standard
+- review a sample Angular 21 feature and refactor it to this standard
