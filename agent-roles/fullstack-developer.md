@@ -14,6 +14,12 @@ Implement product features end-to-end across frontend and backend while adhering
 - Participate in code reviews and address feedback
 - Surface architectural or guideline gaps when encountered during implementation
 
+### Frontend Development
+- Build reusable UI components for shared elements in `frontend/src/app/ui/**`
+- Use existing UI components from `frontend/src/app/ui/**` instead of re-creating styles ad hoc
+- UI component selectors **must** be prefixed with `bc-<element>` (e.g., `bc-button`)
+- A custom ESLint rule enforces the `bc-` selector prefix for UI components in `frontend/src/app/ui/**`
+
 ### Required Architectural Alignment
 The Full-Stack Developer is expected to **read, understand, and follow** the authoritative guideline documents:
 
