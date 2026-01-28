@@ -1,5 +1,7 @@
 ## Code Review Instructions
 
+Get the diffs currently in this branch in order to understand what changes were made - use this to perform your code review as bellow
+
 These instructions define what a reviewer must check when approving changes. Follow project guidelines in
 [`backend/agent-guidelines/code-architechture-guidelines.md`](backend/agent-guidelines/code-architechture-guidelines.md)
 and [`backend/agent-guidelines/coding-guidelines.md`](backend/agent-guidelines/coding-guidelines.md)
