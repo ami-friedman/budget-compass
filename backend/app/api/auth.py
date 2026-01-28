@@ -11,6 +11,7 @@ from app.api.problem_details import problem
 from app.core.config import get_settings
 from app.db.session import get_session
 from app.domains.auth import errors, service
+from app.domains.auth.repository import SqlAuthRepository
 from app.domains.auth.models import User
 from app.domains.auth.schemas import AuthEmailIn, UserSummary
 
@@ -50,7 +51,8 @@ def _user_summary(user: User) -> UserSummary:
 @auth_router.post("/register", status_code=status.HTTP_201_CREATED, response_model=UserSummary)
 def register(payload: AuthEmailIn, response: Response, db: Session = Depends(get_session)) -> UserSummary:
     try:
-        user, _session, token = service.register_user(db, payload.email)
+        repo = SqlAuthRepository(db)
+        user, _session, token = service.register_user(repo, payload.email)
         db.commit()
     except errors.UserAlreadyExists as exc:
         raise problem(
@@ -67,7 +69,8 @@ def register(payload: AuthEmailIn, response: Response, db: Session = Depends(get
 @auth_router.post("/login", response_model=UserSummary)
 def login(payload: AuthEmailIn, response: Response, db: Session = Depends(get_session)) -> UserSummary:
     try:
-        user, _session, token = service.login_user(db, payload.email)
+        repo = SqlAuthRepository(db)
+        user, _session, token = service.login_user(repo, payload.email)
         db.commit()
     except errors.UserNotFound as exc:
         raise problem(
@@ -96,7 +99,8 @@ def logout(
 ) -> None:
     if token:
         try:
-            service.logout_session(db, token)
+            repo = SqlAuthRepository(db)
+            service.logout_session(repo, token)
             db.commit()
         except errors.AuthError:
             pass
@@ -118,7 +122,8 @@ def me(
         )
 
     try:
-        user = service.get_user_for_session(db, token)
+        repo = SqlAuthRepository(db)
+        user = service.get_user_for_session(repo, token)
     except errors.SessionNotFound as exc:
         raise problem(
             status_code=status.HTTP_401_UNAUTHORIZED,

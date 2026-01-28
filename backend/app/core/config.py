@@ -1,10 +1,15 @@
 """Application configuration loaded from environment variables."""
 
 from functools import lru_cache
+import logging
+import os
+from pathlib import Path
 
 from urllib.parse import quote_plus
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+logger = logging.getLogger(__name__)
 
 
 class Settings(BaseSettings):
@@ -30,4 +35,13 @@ class Settings(BaseSettings):
 
 @lru_cache
 def get_settings() -> Settings:
-    return Settings()
+    settings = Settings()
+    env_file = Settings.model_config.get("env_file", ".env")
+    env_path = Path(env_file)
+    logger.info(
+        "Settings load: cwd=%s env_file=%s exists=%s",
+        os.getcwd(),
+        env_path,
+        env_path.exists()
+    )
+    return settings

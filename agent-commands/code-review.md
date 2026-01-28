@@ -110,3 +110,42 @@ for frontend work.
 - [ ] Reactive forms and validation align with backend constraints
 - [ ] Performance, accessibility, and error handling meet app standards
 - [ ] Linting and tests cover critical UI flows
+
+
+**Generate comprehensive code review and bug detection report into a file: code-review-results.md**
+
+   Output a detailed report with:
+
+   - Summary of changes reviewed
+   - **🐛 BUGS & CRITICAL ISSUES** (highest priority)
+     - Runtime errors and exceptions
+     - Memory leaks and resource management issues
+     - Null/undefined reference errors
+     - Async/await and Promise handling issues
+     - Type safety violations
+   - **⚠️ POTENTIAL ISSUES** (medium priority)
+     - Performance bottlenecks
+     - Security vulnerabilities
+     - Error handling gaps
+     - Edge case handling
+   - **📋 CODE QUALITY** (standard priority)
+     - Framework guideline violations
+     - Best practice deviations
+     - Code structure improvements
+   - Compliance score against framework guidelines
+   - Bug risk assessment score
+   - Action items prioritized by severity (Critical → High → Medium → Low)
+
+**Provide actionable feedback with bug detection focus**
+
+   For each issue found:
+
+   - Categorize by type: Bug, Security, Performance, or Code Quality
+   - Severity level: Critical, High, Medium, Low
+   - **MANDATORY**: Reference the specific guideline rule with section number and exact quote
+   - Show the problematic code snippet
+   - Explain the potential impact (runtime errors, security risks, performance degradation)
+   - Quote the exact guideline text that is being violated
+   - Explain the benefit of the change briefly (TLDR version only)
+   - Provide the recommended fix with option to apply it easily using the cascade in the end
+
