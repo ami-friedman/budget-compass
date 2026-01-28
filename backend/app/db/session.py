@@ -5,6 +5,7 @@ from collections.abc import Generator
 
 from sqlalchemy.engine import Engine
 from sqlmodel import Session, create_engine
+from urllib.parse import quote_plus
 
 from app.core.config import Settings, get_settings
 
@@ -16,7 +17,7 @@ def build_engine(settings: Settings) -> Engine:
     logger.info(
         "DB connection details: user=%s url=%s",
         settings.db_user,
-        settings.database_url.replace(settings.db_password, "***")
+        settings.database_url.replace(quote_plus(settings.db_password), "***")
         if settings.db_password
         else settings.database_url,
     )
