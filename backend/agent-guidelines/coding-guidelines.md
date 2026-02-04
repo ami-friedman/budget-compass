@@ -23,6 +23,22 @@
 - Prefer fixtures for consistent, reliable setup/teardown. :contentReference[oaicite:8]{index=8}
 - Test boundaries: parsing/validation, domain logic, DB transactions, and “money math” edge cases.
 
+### Unit test strategy for new functionality (pytest, unit tests only)
+
+**Expectation:** Every new domain behavior or business rule ships with unit tests that run fast and do **not** depend on the DB or FastAPI.
+
+Checklist:
+- [ ] Write unit tests for the **domain layer** behavior you added/changed (pure Python, no I/O).
+- [ ] Keep tests **deterministic** (no time, random, or network unless controlled via fixtures).
+- [ ] Use **pytest fixtures** to build domain objects and reuse setup without global state.
+- [ ] Use **parametrization** to cover edge cases (money math, validation boundaries, invariants).
+- [ ] Assert on **behavior and invariants**, not implementation details.
+
+Non-goals for unit tests:
+- No DB sessions, migrations, or real repositories.
+- No FastAPI `TestClient` or HTTP calls.
+- No dependency injection wiring tests (belongs to integration/contract tests).
+
 ## 6) Project hygiene (keeps the repo scalable)
 - Keep dependencies pinned (lockfile), separate dev vs prod deps, and run security scanning.
 - Keep configuration out of code (env vars), and keep secrets out of git (rotate if leaked). :contentReference[oaicite:9]{index=9}
