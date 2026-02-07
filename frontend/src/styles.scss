@@ -4,3 +4,22 @@ body {
   @apply text-gray-700;
 }
 
+.bc-btn {
+  @apply inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-semibold text-slate-900 no-underline transition;
+}
+
+.bc-btn--primary {
+  @apply bg-blue-600 text-white hover:bg-blue-700;
+}
+
+.bc-btn--secondary {
+  @apply border border-slate-200 bg-white text-slate-900 hover:bg-slate-50;
+}
+
+.bc-btn--ghost {
+  @apply border border-transparent text-slate-600 hover:border-slate-200 hover:text-slate-900;
+}
+
+.bc-btn--lg {
+  @apply px-5 py-3 text-base;
+}
