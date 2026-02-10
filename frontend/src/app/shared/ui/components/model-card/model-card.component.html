@@ -1,0 +1,12 @@
+<div
+  class="bc-card flex flex-col gap-2 p-5"
+  [class.border-blue-200]="accent() === 'accounts'"
+  [class.border-emerald-200]="accent() === 'categories'"
+>
+  <h3 class="text-base font-semibold text-slate-900">
+    {{ title() }}
+  </h3>
+  <p class="text-sm text-slate-600">
+    {{ description() }}
+  </p>
+</div>
