@@ -1,7 +1,7 @@
 import { Component, computed, input } from '@angular/core';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 
-type ButtonVariant = 'primary' | 'secondary' | 'ghost';
+type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'destructive';
 type ButtonSize = 'md' | 'lg';
 
 @Component({

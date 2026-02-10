@@ -1,7 +1,29 @@
 @use "tailwindcss";
 
+:root {
+  // Colors - Light theme from Figma
+  --bc-color-bg-primary: #f9fafb;        // gray-50
+  --bc-color-bg-card: #ffffff;
+  --bc-color-border: #e5e7eb;            // gray-200
+
+  --bc-color-text-primary: #111827;      // gray-900
+  --bc-color-text-secondary: #6b7280;    // gray-500
+  --bc-color-text-muted: #9ca3af;        // gray-400
+
+  --bc-color-primary: #3b82f6;           // blue-600
+  --bc-color-primary-hover: #2563eb;     // blue-700
+
+  // Spacing
+  --bc-radius-2xl: 1rem;                 // 16px (rounded-2xl)
+  --bc-radius-xl: 0.75rem;               // 12px (rounded-xl)
+
+  // Shadows
+  --bc-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --bc-shadow-blue: 0 10px 25px -5px rgb(59 130 246 / 0.2);
+}
+
 body {
-  @apply text-gray-700;
+  @apply bg-gray-50 text-gray-900;
 }
 
 .bc-btn {
@@ -18,6 +40,10 @@ body {
 
 .bc-btn--ghost {
   @apply border border-transparent text-slate-600 hover:border-slate-200 hover:text-slate-900;
+}
+
+.bc-btn--destructive {
+  @apply bg-red-600 text-white hover:bg-red-700;
 }
 
 .bc-btn--lg {
