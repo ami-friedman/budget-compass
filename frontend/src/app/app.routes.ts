@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { LandingPage } from './features/landing/landing.page';
 import { AppShellComponent } from './core/layout/app-shell/app-shell.component';
 import { DashboardPage } from './features/dashboard/dashboard.page';
 import { TransactionsPage } from './features/transactions/transactions.page';
@@ -9,10 +8,6 @@ import { GoalsPage } from './features/goals/goals.page';
 export const routes: Routes = [
   {
     path: '',
-    component: LandingPage
-  },
-  {
-    path: 'app',
     component: AppShellComponent,
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
